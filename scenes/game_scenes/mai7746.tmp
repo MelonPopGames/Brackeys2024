@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwabw4la276fn"]
+
+[ext_resource type="Script" path="res://scripts/game_scenes/main_cultivation.gd" id="1_i5tky"]
+
+[sub_resource type="Theme" id="Theme_03avu"]
+
+[node name="MainCultivation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5tky")
+
+[node name="Clicker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 288.0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Clicker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -144.0
+offset_right = 72.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CULTIVATE QI"
+
+[node name="Minigames" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = 72.0
+offset_right = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrades" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 288.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 288.0
+offset_right = 864.0
+offset_bottom = 72.0
+
+[node name="Total Qi" type="Label" parent="Stats"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 48.0
+theme = SubResource("Theme_03avu")
+theme_type_variation = &"HeaderMedium"
+text = "Qi: 0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Passive" type="Label" parent="Stats"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 576.0
+offset_bottom = 72.0
+text = "Passive Generation: <value>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Clicker/Button" to="." method="_on_button_pressed"]
