@@ -5,17 +5,21 @@ extends Control
 @onready var passiveLabel: Label = $Stats/Passive
 
 # Variables
-var passiveGeneration: int = 0
+var passiveGen = PassiveGeneration.passiveGeneration
 
 # Events
 func _on_button_pressed() -> void:
-	GameManager.incrementQi()
-	updateQiLabel(GameManager.qiAmount)
+	GameManager.incrementQi(GameManager.qiIncr)
 
 func _ready() -> void:
 	updateQiLabel(GameManager.qiAmount)
-	passiveLabel.text = "Passive Generation: %s" %passiveGeneration
+	PassiveGeneration.startTimer()
+	passiveLabel.text = "Passive Generation: %s" %passiveGen
 
+func _process(delta: float) -> void:
+	updateQiLabel(GameManager.qiAmount)
+	
 # Functions
 func updateQiLabel(newValue: int) -> void:
 	qiLabel.text = "Qi: %s" %newValue
+	passiveLabel.text = "Passive Generation: %s" %passiveGen
